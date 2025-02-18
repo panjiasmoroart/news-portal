@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 
+import { base_url } from '../../config/config';
+import axios from 'axios'
+import toast from 'react-hot-toast'
+
 const Login = () => {
 
     const [loader, setLoader] = useState(false);
@@ -18,8 +22,13 @@ const Login = () => {
     }
     const submit = async (e) => {
         e.preventDefault()
-        alert(JSON.stringify(state))
-        console.log(JSON.stringify(state));
+        try {
+            const { data } = await axios.post(`${base_url}/api/login`,state)
+            alert(JSON.stringify(data))
+            console.log(data)
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     return (
