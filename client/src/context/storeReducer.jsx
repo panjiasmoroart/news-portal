@@ -15,7 +15,8 @@ const storeReducer = (state, action) => {
        state.token = ''
        state.userInfo = ''
     }
-     
+
+    return state;     
 };
 
 export default storeReducer;
