@@ -23,9 +23,10 @@ const Login = () => {
     const submit = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post(`${base_url}/api/login`,state)
-            alert(JSON.stringify(data))
-            console.log(data)
+            const { data } = await axios.post(`${base_url}/api/login`,state);
+            setLoader(false);
+            localStorage.setItem('newsToken', data.token);
+            toast.success(data.message);
         } catch(error) {
             console.log(error)
         }
