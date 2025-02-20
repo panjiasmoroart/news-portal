@@ -1,18 +1,20 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { base_url } from '../../config/config';
-import axios from 'axios'
-import toast from 'react-hot-toast'
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import storeContext from '../../context/storeContext';
 
 const Login = () => {
-
+    const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
-
     const [state, setState] = useState({
         email: "",
         password: ''
     })
+    const { dispatch } =  useContext(storeContext);
 
     const inputHandle = (e) => {
         setState({
@@ -20,6 +22,7 @@ const Login = () => {
             [e.target.name]: e.target.value
         })
     }
+
     const submit = async (e) => {
         e.preventDefault()
         try {
@@ -27,8 +30,17 @@ const Login = () => {
             setLoader(false);
             localStorage.setItem('newsToken', data.token);
             toast.success(data.message);
+            dispatch({
+                type: "login_success",
+                payload:{
+                    token: data.token
+                }
+            })
+            navigate('/dashboard')
         } catch(error) {
-            console.log(error)
+            console.log(error);
+            setLoader(false);
+            toast.error(error.response.data.message);
         }
     }
 
