@@ -30,7 +30,7 @@ function App() {
 
           <Route path="/dashboard" element={<ProtectDashboard />}>
             <Route path="" element={<MainLayout />}>
-              <Route path='' element={store?.userInfo?.role === 'admin' ? <Navigate to='/dashboard/admin'/> : <Navigate to='/dashboard/writer'/>}/>
+              <Route path='' element={store.userInfo.role === 'admin' ? <Navigate to='/dashboard/admin'/> : <Navigate to='/dashboard/writer'/>}/>
               <Route path="unable-access" element={<Unable />} />
               <Route path="profile" element={<Profile />} />
               <Route path="news" element={<News />} />

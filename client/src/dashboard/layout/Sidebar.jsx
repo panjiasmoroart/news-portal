@@ -38,7 +38,7 @@ const Sidebar = () => {
       </div>
       <ul className="px-3 flex flex-col gap-y-1 font-medium">
       {
-        store?.userInfo?.role === 'admin' ? <>
+        store.userInfo.role === 'admin' ? <>
            <li>
               <Link
                 to="/dashboard/admin"

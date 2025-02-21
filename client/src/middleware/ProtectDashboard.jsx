@@ -11,7 +11,7 @@ const ProtectDashboard = () => {
   const { store } = useContext(storeContext);
   // console.log('ProtectDashboard : ', store);
 
-  if (store?.userInfo) {
+  if (store.userInfo) {
     return <Outlet />;
   } else {
     return <Navigate to="/login" />;
