@@ -20,6 +20,7 @@ function App() {
   // } 
 
   const { store } = useContext(storeContext);
+  console.log(store);
 
   return (
     <>
