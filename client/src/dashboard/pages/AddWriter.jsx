@@ -1,8 +1,55 @@
-import { useState } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
+import { base_url } from '../../config/config';
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import storeContext from '../../context/storeContext';
+
 
 const AddWriter = () => {
   const [loader, setLoader] = useState(false);
+  
+  const navigate = useNavigate();
+
+  const { store } = useContext(storeContext);
+  
+  const [state, setState] = useState({
+      name: "",
+      email: "",
+      password: "",
+      category: ""
+  });
+
+  console.log(state);
+
+  const inputHandle = (e) => {
+    setState({
+        ...state,
+        [e.target.name]: e.target.value
+    })
+  }
+
+  const submit = async (e) => {
+     
+    e.preventDefault(); 
+    
+    try {
+        setLoader(true);
+        const { data } = await axios.post(`${base_url}/api/writer/add`,state, {
+            headers: {
+                'Authorization' : `Bearer ${store.token}`
+            }
+        });
+        setLoader(false); 
+        toast.success(data.message);
+        navigate('/dashboard/writers'); 
+    } catch (error) {
+        setLoader(false);
+        toast.error(error.response.data.message);
+    }
+  }
 
   return (
     <div className="bg-white rounded-md">
@@ -17,7 +64,7 @@ const AddWriter = () => {
       </div>
 
       <div className="p-4">
-        <form>
+        <form onSubmit={submit}>
           <div className="grid grid-cols-2 gap-x-8 mb-3">
             <div className="flex flex-col gap-y-2">
               <label
@@ -27,6 +74,7 @@ const AddWriter = () => {
                 Name
               </label>
               <input
+                onChange={inputHandle} value={state.name}
                 required
                 type="text"
                 placeholder="Name"
@@ -44,6 +92,7 @@ const AddWriter = () => {
                 Category
               </label>
               <select
+                onChange={inputHandle} value={state.category}
                 required
                 name="category"
                 id="category"
@@ -69,6 +118,7 @@ const AddWriter = () => {
                 Email
               </label>
               <input
+                 onChange={inputHandle} value={state.email} 
                 required
                 type="email"
                 placeholder="Email"
@@ -86,6 +136,7 @@ const AddWriter = () => {
                 Password
               </label>
               <input
+                onChange={inputHandle} value={state.password}
                 required
                 type="password"
                 placeholder="Password"
