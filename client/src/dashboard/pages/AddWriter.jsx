@@ -22,7 +22,7 @@ const AddWriter = () => {
       category: ""
   });
 
-  console.log(state);
+  // console.log(state);
 
   const inputHandle = (e) => {
     setState({
