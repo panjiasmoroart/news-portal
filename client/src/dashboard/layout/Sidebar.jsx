@@ -19,6 +19,8 @@ const Sidebar = () => {
   const { store, dispatch } = useContext(storeContext);
   const navigate = useNavigate();
 
+  console.log('sidebar ',  store.userInfo.role);
+
   const logout = () => {
     localStorage.removeItem('newsToken');
     dispatch({ type: 'logout', payload: '' });
@@ -102,7 +104,7 @@ const Sidebar = () => {
                 <span className="text-[18px]">
                   <MdDashboard />
                 </span>
-                <span className="text-[18px]">Dashboard</span>
+                <span className="text-[18px]">Dashboard Writer</span>
               </Link>
             </li>
 

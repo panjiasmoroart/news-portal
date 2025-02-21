@@ -13,6 +13,7 @@ import Writers from "./dashboard/pages/Writers";
 import WriterIndex from "./dashboard/pages/WriterIndex";
 import CreateNews from './dashboard/pages/CreateNews';
 import storeContext from './context/storeContext';
+import EditWriter from './dashboard/pages/EditWriter';
 
 function App() {
   // const userInfo = {
@@ -20,15 +21,26 @@ function App() {
   // } 
 
   const { store } = useContext(storeContext);
-  console.log(store);
 
+  // const roleSession = store && store.userInfo.role;
+  // const handleNavigate = () => {
+  //   switch (roleSession) {
+  //     case "admin":
+  //       console.log('masuk admin');
+  //       return <Navigate to='/dashboard/admin'   />;
+  //     default:
+  //       console.log('masuk writer');
+  //       return <Navigate to='/dashboard/writer'  />;
+  //   }
+  // };
+  
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
 
-          <Route path="/dashboard" element={<ProtectDashboard />}>
+          <Route path={`/dashboard`} element={<ProtectDashboard />}>
             <Route path="" element={<MainLayout />}>
               <Route path='' element={store.userInfo.role === 'admin' ? <Navigate to='/dashboard/admin'/> : <Navigate to='/dashboard/writer'/>}/>
               <Route path="unable-access" element={<Unable />} />
@@ -39,6 +51,7 @@ function App() {
                 <Route path="admin" element={<AdminIndex />} />
                 <Route path="writer/add" element={<AddWriter />} />
                 <Route path="writers" element={<Writers />} />
+                <Route path='writer/edit/:id' element={<EditWriter/>} />
               </Route>
 
               <Route path="" element={<ProtectRole role="writer" />}>
