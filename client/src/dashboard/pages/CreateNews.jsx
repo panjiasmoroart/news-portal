@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaImages } from "react-icons/fa6";
 import JoditEditor from 'jodit-react';
@@ -9,6 +9,20 @@ const CreateNews = () => {
     const [loader, setLoader] = useState(false);
     const [show, setShow] = useState(false);
     const [images, setImages] = useState([]);
+
+    const editor = useRef(null)
+    const [title,setTitle] = useState('')
+    const [image, setImage] = useState('')
+    const [img, setImg] = useState('')
+    const [description, setDescription] = useState('')
+
+    const imageHandle = (e) => {
+        const {files } = e.target
+        if (files.length > 0) {
+            setImg(URL.createObjectURL(files[0]))
+            setImage(files[0])
+        }
+    }
 
     return (
         <>
@@ -23,15 +37,19 @@ const CreateNews = () => {
                 <form>
                     <div>
                         <label htmlFor="title" className='block text-md font-medium text-gray-600 mb-2'>Title</label>
-                        <input type="text" placeholder='Enter News Title' name='title' id='title' className='w-full px-4 py-2 border rounded-md border-gray-300 focus:border-blue-500 outline-none transition h-10' required/>
+                        <input  value={title} onChange={(e) => setTitle(e.target.value) }  type="text" placeholder='Enter News Title' name='title' id='title' className='w-full px-4 py-2 border rounded-md border-gray-300 focus:border-blue-500 outline-none transition h-10' required/>
                     </div>
 
                     <div>
                         <label htmlFor="img" className='w-full h-[240px] flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-500 rounded-lg text-gray-500 hover:border-blue-500 transition mt-4'>
-                        <FaImages className='text-4xl mb-2' />
-                        <span className='font-medium'>Select Image</span>
+                            {
+                                img ? <img src={img} className='w-full h-full' alt='image' /> : <div className='flex justify-center items-center flex-col gap-y-2'>
+                                <FaImages className='text-4xl mb-2' />
+                                <span className='font-medium'>Select Image</span>
+                                </div>
+                            } 
                         </label>
-                        <input type="file" className='hidden' id='img' required /> 
+                        <input onChange={imageHandle} type="file" className='hidden' id='img' required /> 
                     </div>
                     <div>
                         <div className='flex justify-between items-center mb-2 mt-4'>
@@ -41,7 +59,13 @@ const CreateNews = () => {
                             </div> 
                         </div>
                         
-                        <JoditEditor className='w-full border border-gray-400 rounded-md' />
+                        <JoditEditor
+                            ref={editor}
+                            value={description}
+                            tabIndex={1}
+                            onBlur={value => setDescription(value)}
+                            onChange={() => {}}
+                            className='w-full border border-gray-400 rounded-md' />
                     </div>
                     <div className='mt-4'>
                         <button type='submit' disabled={loader} className='px-3 py-[6px] bg-blue-500 rounded-md text-white hover:bg-blue-800'>
