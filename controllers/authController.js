@@ -133,6 +133,10 @@ class authController {
         }
 
     }
+
+    getWriterById = async (req, res) => {
+        console.log('get WriterById')
+    }
 }
 
 module.exports = new authController()
