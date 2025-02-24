@@ -181,6 +181,19 @@ class authController {
         }
           
      }
+
+     delete_writer = async(req, res) => {
+        const {id} = req.params;
+        try {
+            const writer = await authModel.findByIdAndDelete(id);
+            if (!writer) {
+                return res.status(404).json({ message: 'Writer not found'})
+            }
+            return res.status(200).json({message: 'Writer deleted successfully'})
+        } catch (error) {
+            return res.status(500).json({ message: 'Internal Server Error' })
+        }
+    } 
 }
 
 module.exports = new authController()
