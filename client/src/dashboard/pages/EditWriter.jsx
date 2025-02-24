@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { base_url } from '../../config/config';
 import axios from 'axios'
@@ -28,18 +28,24 @@ const EditWriter = () => {
                 headers: {
                     'Authorization' : `Bearer ${store.token}`
                 }
-            } )      
+            });
+
             setState({
                 name: data.writer.name,
                 email: data.writer.email,
                 category: data.writer.category,
                 role: data.writer.role,
-            })        
-             
+            });
+            
+            // console.log('Edit Writer', data);
         } catch (error) { 
             toast.error('Failed to load writer data')
         }
     }
+
+    useEffect(() => {
+        getWriterData();
+    }, [id])
 
     const inputHandle = (e) => {
         setState({
