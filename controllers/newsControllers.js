@@ -84,6 +84,10 @@ class newsControllers {
             return res.status(500).json({message: 'Internal server Error'});
         }
     }
+
+    get_dashboard_news = async (req, res) => {
+        console.log(req.userInfo);
+    }
 }
 
 module.exports = new newsControllers()
