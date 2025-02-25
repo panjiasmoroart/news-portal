@@ -10,6 +10,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import storeContext from '../../context/storeContext';
 import { base_url } from '../../config/config';
 import axios from 'axios'
+import { convert } from 'html-to-text'
 
 
 const NewsContent = () => {
@@ -70,24 +71,18 @@ const NewsContent = () => {
             </tr>
           </thead>
           <tbody className="text-gray-600">
-            {[1, 2, 3].map((item, index) => (
+            { news.map((n, index) => (
               <tr key={index} className="border-t">
-                <td className="py-4 px-6">1</td>
-                <td className="py-4 px-6">News Title</td>
+                 <td className='py-4 px-6'>{index+1}</td>
+                <td className='py-4 px-6'>{ n.title.slice(0,15) }...</td>
                 <td className="py-4 px-6">
-                  <img
-                    className="w-10 h-10 rounded-full object-cover"
-                    src={profile}
-                    alt="news"
-                  />
+                  <img className='w-10 h-10 rounded-full object-cover' src={ n.image } alt="news" />
                 </td>
-                <td className="py-4 px-6">Category Name</td>
-                <td className="py-4 px-6">Description</td>
-                <td className="py-4 px-6">12-08-2024</td>
+                <td className='py-4 px-6'>{ n.category }</td>
+                <td className='py-4 px-6'>{convert(n.description).slice(0,15)}...</td>
+                <td className='py-4 px-6'>{ n.date }</td>
                 <td className="py-4 px-6">
-                  <span className="px-3 py-1 bg-green-200 rounded-full text-xs font-semibold">
-                    Active
-                  </span>
+                  <span className='px-3 py-1 bg-green-200 rounded-full text-xs font-semibold'>{ n.status }</span>
                 </td>
                 <td className="py-4 px-6">
                   <div className="flex gap-3 text-gray-500">
