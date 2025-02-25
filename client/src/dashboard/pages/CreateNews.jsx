@@ -15,6 +15,7 @@ const CreateNews = () => {
     const [loader, setLoader] = useState(false);
     const [show, setShow] = useState(false);
     const [images, setImages] = useState([]);
+    const [imagesLoader, setImagesLoader] = useState(false);
 
     const editor = useRef(null)
     const [title,setTitle] = useState('')
@@ -69,6 +70,29 @@ const CreateNews = () => {
             setImages(data.images)
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    const imageHandler = async (e) => {
+        const files = e.target.files;
+        
+        try {
+            const formData = new FormData()
+            for (let i = 0; i < files.length; i++) {
+                 formData.append('images',files[i]) 
+            }
+            setImagesLoader(true)
+            const { data } = await axios.post(`${base_url}/api/images/add`,formData, {
+                headers: {
+                    'Authorization' : `Bearer ${store.token}`
+                }
+            } )              
+            setImagesLoader(false) 
+            setImages([...images, data.images])
+            toast.success(data.message)  
+        } catch (error) {
+            console.log(error)
+            setImagesLoader(false) 
         }
     }
 
@@ -128,7 +152,7 @@ const CreateNews = () => {
                 </form>
 
                 {show && <Gallery setShow={setShow} images={images} />}
-                <input type="file" multiple id="images" className='hidden' />
+                <input onChange={imageHandler} type="file" multiple id="images" className='hidden' />
             </div>
         </>
     );

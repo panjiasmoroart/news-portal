@@ -51,6 +51,10 @@ class newsControllers {
              return res.status(500).json({message: 'Internal server Error'})
          }
     }
+
+    add_images = async (req, res) => {
+
+    }
 }
 
 module.exports = new newsControllers()
