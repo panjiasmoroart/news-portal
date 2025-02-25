@@ -31,7 +31,7 @@ const Gallery = ({ setShow,images}) => {
 
                         <div className='grid grid-cols-4 gap-x-2 mt-4'>
                             <div className='cursor-pointer'>
-                                Recent Uploaded Image 
+                                {/* Recent Uploaded Image  */}
                                 {
                                     images.length > 0 && images.map((img, index) => <div className='cursor-pointer' key={index}>
                                         <img src={img.url} alt="images" className='w-full h-[100px]'/>

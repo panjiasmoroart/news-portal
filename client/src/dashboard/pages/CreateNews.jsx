@@ -75,7 +75,7 @@ const CreateNews = () => {
 
     const imageHandler = async (e) => {
         const files = e.target.files;
-        
+
         try {
             const formData = new FormData()
             for (let i = 0; i < files.length; i++) {
@@ -98,7 +98,7 @@ const CreateNews = () => {
 
     useEffect(() => {
         get_images()
-    },[])
+    },[images])
 
 
     return (
