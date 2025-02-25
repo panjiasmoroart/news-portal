@@ -22,7 +22,7 @@ class authController {
 
         try {
             const user = await authModel.findOne({ email }).select('+password');
-            console.log(user);
+            // console.log(user);
             
             if (user) {
                 const match = await bcrypt.compare(password, user.password);

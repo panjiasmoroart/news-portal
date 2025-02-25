@@ -100,6 +100,10 @@ class newsControllers {
         return res.status(500).json({message: 'Internal server Error'})
       }
     }
+
+    get_edit_dashboard_news = async(req, res) => {
+        console.log('edit news')
+    }
 }
 
 module.exports = new newsControllers()
