@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaImages } from "react-icons/fa6";
 import JoditEditor from 'jodit-react';
@@ -57,6 +57,24 @@ const CreateNews = () => {
             toast.error(error.response.data.message)
         }  
     }
+
+    const get_images = async () => {
+        try {
+            const { data } = await axios.get(`${base_url}/api/images`, {
+                headers: {
+                    'Authorization' : `Bearer ${store.token}`
+                }
+            })   
+            console.log(data.images)
+            setImages(data.images)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        get_images()
+    },[])
 
 
     return (

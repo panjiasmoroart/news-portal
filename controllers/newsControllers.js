@@ -3,6 +3,7 @@ const cloudinary = require('cloudinary').v2
 const newsModel = require('../models/newsModel')
 const {mongo: { ObjectId }} = require('mongoose')
 const moment = require('moment')
+const galleryModel = require('../models/galleryModel')
 
 class newsControllers {
 
@@ -38,6 +39,11 @@ class newsControllers {
         } catch (error) {
               return res.status(500).json({message: 'Internal server Error'})
         } 
+    }
+
+    get_images = async (req, res) => {
+        const {id} = req.userInfo
+        console.log(id)
     }
 }
 
