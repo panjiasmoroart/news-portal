@@ -18,10 +18,11 @@ if (process.env.mode === 'production') {
 }
 const port = process.env.port 
 
-app.use('/',require('./routes/authRoutes'))
+app.use('/',require('./routes/authRoutes'));
+app.use('/',require('./routes/newsRoutes'));
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Express API V.1 News");
 });
 
 db_connect();
