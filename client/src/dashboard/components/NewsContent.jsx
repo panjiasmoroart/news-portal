@@ -9,8 +9,9 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import storeContext from '../../context/storeContext';
 import { base_url } from '../../config/config';
-import axios from 'axios'
-import { convert } from 'html-to-text'
+import axios from 'axios';
+import { convert } from 'html-to-text';
+import { toast } from 'react-hot-toast';
 
 
 const NewsContent = () => {
@@ -35,7 +36,23 @@ const NewsContent = () => {
   
   useEffect(() => {
       get_news()
-  },[])
+  },[]);
+
+  const deleteNews = async (newsId) => {
+    if (window.confirm('Are you sure to delete?')) {
+        try {
+            const { data } = await axios.delete(`${base_url}/api/news/delete/${newsId}`, {
+                headers: {
+                    'Authorization' : `Bearer ${store.token}`
+                }
+            })   
+            toast.success(data.message)
+            get_news();
+        } catch (error) {
+            console.log(error)
+        } 
+    } 
+}
 
   return (
     <div className="bg-gray-50 min-h-screen p-6">
@@ -101,12 +118,9 @@ const NewsContent = () => {
                         </>
                     }
                 
-                    <Link
-                      to="#"
-                      className="p-2 bg-red-500 text-white rounded hover:bg-red-800"
-                    >
+                    <button onClick={() => deleteNews(n._id) } className='p-2 bg-red-500 text-white rounded hover:bg-red-800'>
                       <FaTrashAlt />
-                    </Link>
+                    </button> 
                   </div>
                 </td>
               </tr>
