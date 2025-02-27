@@ -72,10 +72,25 @@ const NewsContent = () => {
     setPerPage(5)
   }
 
+  const type_filter = (e) => {
+    if (e.target.value === '') {
+        setNews(all_news)
+        setPage(1)
+        setPerPage(5)
+
+    } else {
+        const tempNews = all_news.filter(data => data.status === e.target.value)
+        setNews(tempNews)
+        setPage(1)
+        setPerPage(5)
+    }
+  }
+
   return (
     <div className="bg-gray-50 min-h-screen p-6">
       <div className="flex items-center gap-4 mb-6">
         <select
+          onChange={type_filter}
           name="status"
           className="w-48 px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-400"
         >
@@ -163,7 +178,8 @@ const NewsContent = () => {
         </div>
 
         <div className="flex items-center gap-4 text-sm text-gray-600">
-        <span className='font-bold'> {(page - 1) * perPage + 1} / {news.length} - {pages} </span>
+        {/* <span className='font-bold'> {(page - 1) * perPage + 1} / {news.length} - {pages} </span> */}
+        <span className='font-bold'> {(page - 1) * perPage + 1}/{news.length} - {pages} </span>
           <div className="flex gap-2">
             <IoIosArrowBack onClick={() => {
               if (page > 1) setPage(page - 1)  
