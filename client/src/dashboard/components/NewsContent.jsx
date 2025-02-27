@@ -23,7 +23,7 @@ const NewsContent = () => {
   const [pages,setPages] = useState(0)
   const [page,setPage] = useState(1)
 
-  const [res,set_res] = useState({
+  const [res, set_res] = useState({
     id: '',
     loader: false
   })
@@ -92,8 +92,29 @@ const NewsContent = () => {
   }
 
   const update_status = async (status, news_id) => {
-    console.log('on progress')
-    alert('on progress')
+    try {
+          set_res({
+              id: news_id,
+              loader: true
+          })
+      const { data } = await axios.put(`${base_url}/api/news/status-update/${news_id}`,{status}, {
+          headers: {
+              'Authorization' : `Bearer ${store.token}`
+          }
+      })   
+      set_res({
+          id: '',
+          loader: false
+      })
+      toast.success(data.message)
+      get_news();
+    } catch (error) {
+      set_res({
+          id: '',
+          loader: false
+      })
+      console.log(error)
+    } 
   }
 
   return (

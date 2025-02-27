@@ -9,5 +9,6 @@ router.get('/api/news', middleware.auth, newsControllers.get_dashboard_news);
 router.get('/api/edit/news/:news_id', middleware.auth, newsControllers.get_edit_dashboard_news);
 router.put('/api/news/update/:news_id', middleware.auth, newsControllers.update_news);
 router.delete('/api/news/delete/:news_id', middleware.auth, newsControllers.delete_news);
+router.put('/api/news/status-update/:news_id', middleware.auth, newsControllers.update_news_status);
  
 module.exports = router

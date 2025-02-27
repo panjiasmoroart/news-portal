@@ -185,7 +185,19 @@ class newsControllers {
         } catch (error) {
             return res.status(500).json({message: 'Internal server Error'})
         }
-    } 
+    }
+    
+    update_news_status = async (req, res) => {
+
+        const { role } = req.userInfoNew
+        const { news_id} = req.params
+        const { status } = req.body
+    
+        console.log(role)
+        console.log(news_id)
+        console.log(status)
+    
+    }
 }
 
 module.exports = new newsControllers()
