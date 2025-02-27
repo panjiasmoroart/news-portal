@@ -17,7 +17,6 @@ const initialState = {
          };
 
      case 'logout':
-
        return {
          ...state,
          token: '',

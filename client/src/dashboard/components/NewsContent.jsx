@@ -63,7 +63,14 @@ const NewsContent = () => {
             console.log(error)
         } 
     } 
-}
+  }
+
+  const search_news  = (e) => {
+    const tempNews = all_news.filter(n => n.title.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1)
+    setNews(tempNews)
+    setPage(1)
+    setPerPage(5)
+  }
 
   return (
     <div className="bg-gray-50 min-h-screen p-6">
@@ -78,6 +85,7 @@ const NewsContent = () => {
           <option value="deactive">Deactive</option>
         </select>
         <input
+          onChange={search_news}
           type="text"
           placeholder="Search News"
           className="w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
@@ -101,7 +109,7 @@ const NewsContent = () => {
           <tbody className="text-gray-600">
             { news.length > 0 && news.slice((page - 1) * perPage, page * perPage).map((n, index) => (
               <tr key={index} className="border-t">
-                 <td className='py-4 px-6'>{index+1}</td>
+                 <td className='py-4 px-6'>{(page - 1) * perPage + index + 1}</td>
                 <td className='py-4 px-6'>{ n.title.slice(0,15) }...</td>
                 <td className="py-4 px-6">
                   <img className='w-10 h-10 rounded-full object-cover' src={ n.image } alt="news" />
