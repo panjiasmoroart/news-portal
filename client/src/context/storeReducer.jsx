@@ -2,21 +2,32 @@
 import React from 'react';
 import decode_token from '../utils';
 
-const storeReducer = (state, action) => {
+const initialState = {
+   token: '',
+   userInfo: {}
+ };
+ 
+ const storeReducer = (state = initialState, action) => {
+   switch (action.type) {
+      case 'login_success':
+         return {
+            ...state,
+            token: action.payload.token,
+            userInfo: decode_token(action.payload.token)
+         };
 
-    const { type, payload } = action
+     case 'logout':
 
-    if (type === 'login_success') {
-       state.token = payload.token
-       state.userInfo = decode_token(payload.token)
-    }
+       return {
+         ...state,
+         token: '',
+         userInfo: {}
+       };
 
-    if (type === 'logout') {
-       state.token = ''
-       state.userInfo = ''
-    }
-
-    return state;     
-};
-
-export default storeReducer;
+      default:
+         return state;
+   }
+ };
+ 
+ export default storeReducer;
+ 

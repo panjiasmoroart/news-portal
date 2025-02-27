@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./dashboard/pages/Login";
@@ -19,22 +20,12 @@ import EditNews from './dashboard/pages/EditNews';
 
 function App() {
   // const userInfo = {
-  //   role: "writer"
+  //   role: "admin"
   // } 
 
   const { store } = useContext(storeContext);
 
-  // const roleSession = store && store.userInfo.role;
-  // const handleNavigate = () => {
-  //   switch (roleSession) {
-  //     case "admin":
-  //       console.log('masuk admin');
-  //       return <Navigate to='/dashboard/admin'   />;
-  //     default:
-  //       console.log('masuk writer');
-  //       return <Navigate to='/dashboard/writer'  />;
-  //   }
-  // };
+  // console.log('App - Role ->', store.userInfo?.role);
   
   return (
     <>
@@ -67,6 +58,8 @@ function App() {
       </BrowserRouter>
     </>
   );
+
+  
 }
 
 export default App;
