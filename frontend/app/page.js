@@ -3,6 +3,7 @@ import HeadLines from "@/components/HeadLines";
 import SimpleNewsCard from "@/components/news/item/SimpleNewsCard";
 import LatestNews from "@/components/news/LatestNews";
 import Title from "@/components/Title";
+import PopularNews from "@/components/news/PopularNews";
 
 export default function Home() {
   return (
@@ -28,7 +29,9 @@ export default function Home() {
                 </div>
               </div> 
             </div> 
-            
+
+            <PopularNews type="Popular News" />
+
           </div>
         </div>  
 
