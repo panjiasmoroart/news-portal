@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const SimpleDetailsNewCard = () => {
+const SimpleDetailsNewCard = ({ type }) => {
     return (
         <div className='bg-white shadow'>
             <div className='group relative overflow-hidden'>
@@ -21,12 +21,19 @@ const SimpleDetailsNewCard = () => {
             </div>
 
             <div className='p-5'>
-            <Link href={'/'} className='text-[15px] font-semibold text-[#333333] hover:text-[#c80000]'>
+                <Link href={'/'} className='text-[15px] font-semibold text-[#333333] hover:text-[#c80000]'>
                 What puzzles reveal about the depths of our own</Link>
                 <div className='flex gap-x-2 text-xs font-normal text-slate-600'>
-                <span className='font-semibold'>25-09-2024</span>
-                <span className='font-semibold'>By Ariyan</span>
+                    <span className='font-semibold'>25-09-2024</span>
+                    <span className='font-semibold'>By Panji Asmoro</span>
                 </div> 
+
+                { type === 'details_news' && 
+                    <p className='text-sm text-slate-600 pt-3'>
+                        The news that Margot Robbie and Jacob Elordi are starring in Emerald Fennell's take on Emily Brontë's
+                        romance has caused a storm – no surprise in an age of increased casting scrutiny.
+                    </p>  
+                }
             </div>
         </div>
     );
