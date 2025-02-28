@@ -7,6 +7,7 @@ import PopularNews from "@/components/news/PopularNews";
 import DetailsNewsRow from "@/components/news/DetailsNewsRow";
 import DetailsNews from "@/components/news/DetailsNews";
 import DetailsNewsCol from "@/components/news/DetailsNewsCol";
+import NewsCard from "@/components/news/item/NewsCard";
 
 export default function Home() {
   return (
@@ -49,6 +50,50 @@ export default function Home() {
               </div> 
             </div>
             {/* end first Section  */}
+
+            {/* 2nd Section  */}
+            <div className="w-full">
+              <div className="flex flex-wrap">
+                <div className="w-full lg:w-4/12">
+                  <div className="pl-3">
+                    <DetailsNewsCol category="Politics" /> 
+                  </div>
+                </div>
+
+                <div className="w-full lg:w-8/12">
+                  <div className="pl-3">
+                    <DetailsNewsRow category="Travel" type="details_news" />
+                    <DetailsNews category="International" />
+                  </div>
+                </div>
+
+              </div> 
+            </div>
+            {/* end 2nd Section  */}
+
+
+            {/* 3nd Section  */}
+            <div className="w-full">
+              <div className="flex flex-wrap">
+                <div className="w-full lg:w-8/12">
+                  <DetailsNewsRow category="Technology" type="details_news" />
+                </div>
+
+                <div className="w-full lg:w-4/12">
+                  <div className="pl-3">
+                    <Title title="Recent News" />
+                    <div className="grid grid-cols-1 gap-y-[8px] mt-2">
+                      {
+                        [1,2,3,4].map((item,i) => (
+                          <NewsCard item={item} key={i} />
+                        ))
+                      }
+                    </div> 
+                  </div>  
+                </div> 
+              </div> 
+            </div>
+             {/* end 3nd Section  */}
 
           </div>
         </div>  
