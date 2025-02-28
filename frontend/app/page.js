@@ -5,6 +5,8 @@ import LatestNews from "@/components/news/LatestNews";
 import Title from "@/components/Title";
 import PopularNews from "@/components/news/PopularNews";
 import DetailsNewsRow from "@/components/news/DetailsNewsRow";
+import DetailsNews from "@/components/news/DetailsNews";
+import DetailsNewsCol from "@/components/news/DetailsNewsCol";
 
 export default function Home() {
   return (
@@ -38,13 +40,15 @@ export default function Home() {
               <div className="flex flex-wrap">
                 <div className="w-full lg:w-8/12">
                   <DetailsNewsRow category="Sports" type="details_news" />
+                  <DetailsNews category="Health" />
                 </div>
 
                 <div className="w-full lg:w-4/12">
-
+                  <DetailsNewsCol category="Education" />
                 </div>
               </div> 
             </div>
+            {/* end first Section  */}
 
           </div>
         </div>  
