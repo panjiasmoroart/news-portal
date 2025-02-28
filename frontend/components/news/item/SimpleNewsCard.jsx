@@ -8,7 +8,7 @@ const SimpleNewsCard = ({ item, type }) => {
             <div className='group relative'>
                 <div className='overflow-hidden'>
                     <div className={`${type ? 'h-[270px] sm:h-[470px]' : 'h-[228px]'} w-full group-hover:scale-[1.1] transition-all duration-[1s]`}>
-                    <Image className='' layout='fill' src={'https://res.cloudinary.com/dbxtifnah/image/upload/v1727025863/news_images/hoz9yxkg1uhkufjhfdh3.png'} alt='images' />
+                    <Image className='' layout='fill' src={'https://res.cloudinary.com/dh1e1yjer/image/upload/v1740626025/news_images/zi5fpwcpxznufwe7hpu3.jpg'} alt='images' />
                     </div>
                 </div>
 
