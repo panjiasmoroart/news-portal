@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../assets/logo.png'
 import Image from 'next/image';
 import Gallery from './news/Gallery';
+import Category from './Category';
 
 const Footer = () => {
     return (
@@ -25,6 +26,9 @@ const Footer = () => {
 
                 <Gallery/>
 
+                <div>
+                    <Category titleStyle="text-white" />
+                </div>
 
                 </div> 
             </div> 
