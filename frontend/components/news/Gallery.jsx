@@ -14,7 +14,7 @@ const Gallery = () => {
                             <Image
                             className=''
                             layout='fill'
-                            src={'https://res.cloudinary.com/dh1e1yjer/image/upload/v1740555178/news_images/h7s7hfayf3wcnqg53bso.jpg'}
+                            src={'https://res.cloudinary.com/dh1e1yjer/image/upload/v1740469019/news_images/jleapsaj6nyupyaujoym.jpg'}
                             alt='gallery image' 
                             /> 
                         </div>
