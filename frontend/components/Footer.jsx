@@ -4,6 +4,10 @@ import Image from 'next/image';
 import Gallery from './news/Gallery';
 import Category from './Category';
 import RecentNewsFooter from './RecentNewsFooter';
+import Link from 'next/link';
+import { FaFacebookF } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
     return (
@@ -35,6 +39,27 @@ const Footer = () => {
 
                 </div> 
             </div> 
+
+            <div className='bg-[#262323]'>
+                <div className='px-4 md:px-8 py-5 flex flex-col md:flex-row gap-3 justify-between items-center'>
+                    <div className='flex gap-y-2 text-gray-300 justify-start items-center'>
+                        <span>Copyright @ 2025 </span>
+                        <Link href={"#"}> Learn with Nextjs</Link> 
+                    </div>
+
+                    <div className='flex gap-x-[4px]'>
+                        <a href="#" className='w-[37px] h-[35px] text-white flex justify-center items-center bg-slate-600'>
+                            <FaFacebookF/>
+                        </a>
+                        <a href="#" className='w-[37px] h-[35px] text-white flex justify-center items-center bg-slate-600'>
+                            <FaTwitter/>
+                        </a>
+                        <a href="#" className='w-[37px] h-[35px] text-white flex justify-center items-center bg-slate-600'>
+                            <FaYoutube/>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
