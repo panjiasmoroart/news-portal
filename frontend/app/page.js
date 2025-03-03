@@ -8,7 +8,6 @@ import DetailsNewsRow from "@/components/news/DetailsNewsRow";
 import DetailsNews from "@/components/news/DetailsNews";
 import DetailsNewsCol from "@/components/news/DetailsNewsCol";
 import NewsCard from "@/components/news/item/NewsCard";
-import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -101,7 +100,7 @@ export default function Home() {
         </div>  
      </main>
 
-     <Footer />                 
+                 
     </div>
   );
 }
