@@ -2,6 +2,7 @@ import React from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import SimpleDetailsNewCard from '@/components/news/item/SimpleDetailsNewCard';
 import Search from '@/components/news/Search';
+import RecentNews from '@/components/news/RecentNews';
 
 const page = () => {
     return (
@@ -31,6 +32,7 @@ const page = () => {
                             <div className='w-full pl-0 xl:pl-4'>
                                 <div className='flex flex-col gap-y-8'>
                                     <Search/>
+                                    <RecentNews />
                                 </div>
                             </div>
                         </div> 
