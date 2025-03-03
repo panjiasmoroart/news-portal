@@ -10,5 +10,8 @@ router.get('/api/edit/news/:news_id', middleware.auth, newsControllers.get_edit_
 router.put('/api/news/update/:news_id', middleware.auth, newsControllers.update_news);
 router.delete('/api/news/delete/:news_id', middleware.auth, newsControllers.delete_news);
 router.put('/api/news/status-update/:news_id', middleware.auth, newsControllers.update_news_status);
+
+// Frontend Api All
+router.get('/api/all/news', newsControllers.get_all_news);
  
 module.exports = router

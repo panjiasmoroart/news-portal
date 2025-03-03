@@ -205,6 +205,10 @@ class newsControllers {
         }
     
     }
+
+    get_all_news = async (req,res) => {
+        console.log('get api')
+    }
 }
 
 module.exports = new newsControllers()

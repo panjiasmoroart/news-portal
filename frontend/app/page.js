@@ -8,8 +8,13 @@ import DetailsNewsRow from "@/components/news/DetailsNewsRow";
 import DetailsNews from "@/components/news/DetailsNews";
 import DetailsNewsCol from "@/components/news/DetailsNewsCol";
 import NewsCard from "@/components/news/item/NewsCard";
+import { base_api_url } from "@/config/config";
 
-export default function Home() {
+const Home = async () => {
+
+  // const news_data = await fetch(`${base_api_url}/api/all/news`);
+  // console.log(news_data);
+
   return (
     <div>
      <main>
@@ -104,3 +109,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
