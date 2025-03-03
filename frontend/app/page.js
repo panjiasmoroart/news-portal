@@ -12,8 +12,15 @@ import { base_api_url } from "@/config/config";
 
 const Home = async () => {
 
-  // const news_data = await fetch(`${base_api_url}/api/all/news`);
-  // console.log(news_data);
+  const news_data = await fetch(`${base_api_url}/api/all/news`, {
+    next: {
+      revalidate: 5,
+    }
+  });
+
+  let news = await news_data?.json()
+  news = news.news
+  console.log(news);
 
   return (
     <div>
