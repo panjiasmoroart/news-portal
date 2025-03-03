@@ -3,6 +3,8 @@ import Breadcrumb from '@/components/Breadcrumb';
 import SimpleDetailsNewCard from '@/components/news/item/SimpleDetailsNewCard';
 import Search from '@/components/news/Search';
 import RecentNews from '@/components/news/RecentNews';
+import PopularNews from '@/components/news/PopularNews';
+import Category from '@/components/Category';
 
 const page = () => {
     return (
@@ -33,10 +35,18 @@ const page = () => {
                                 <div className='flex flex-col gap-y-8'>
                                     <Search/>
                                     <RecentNews />
+
+                                    <div className='p-4 bg-white'>
+                                        <Category titleStyle={"text-gray-700 font-bold"} /> 
+                                    </div> 
                                 </div>
                             </div>
                         </div> 
                     </div> 
+
+                    <div className='pt-8'>
+                        <PopularNews />
+                    </div>
                 </div>
             </div>
         </div>
