@@ -8,7 +8,7 @@ const Breadcrumb = ({ one, two }) => {
                 <li className='inline-flex items-center'>
                 <Link href={`/`} className='inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800'>
                 <svg
-                    class="w-3 h-3 me-2.5"
+                    className="w-3 h-3 me-2.5"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -23,7 +23,7 @@ const Breadcrumb = ({ one, two }) => {
 
                 <li className='flex items-center'> 
                 <svg
-                    class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
+                    className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -31,9 +31,9 @@ const Breadcrumb = ({ one, two }) => {
                     >
                     <path
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="m1 9 4-4-4-4"
                     />
                     </svg>
@@ -45,7 +45,7 @@ const Breadcrumb = ({ one, two }) => {
                 <li aria-current="page">
                     <div className='flex items-center'>
                     <svg
-                    class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
+                    className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -53,9 +53,9 @@ const Breadcrumb = ({ one, two }) => {
                     >
                     <path
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="m1 9 4-4-4-4"
                     />
                     </svg>
