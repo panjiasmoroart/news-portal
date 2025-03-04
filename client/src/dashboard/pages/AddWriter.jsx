@@ -105,6 +105,7 @@ const AddWriter = () => {
                 <option value="International">International</option>
                 <option value="Sports">Sports</option>
                 <option value="Technology">Technology</option>
+                <option value="Business">Business</option>
               </select>
             </div>
           </div>
