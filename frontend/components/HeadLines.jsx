@@ -3,28 +3,29 @@ import LoadingSpinner from 'react-spinners-components'
 import Marquee from 'react-fast-marquee';
 import Link from 'next/link';
 
-const HeadLines = () => {
+const HeadLines = ({ news }) => { 
+    console.log(news)
 
-    const head = [
-        {
-            title: 'Modi meets top US tech leaders amid semiconductor push'
-        },
-        {
-            title: 'Six dead after record rain causes floods in Japan'
-        },
-        {
-            title: 'Modi meets top US tech leaders amid semiconductor push'
-        },
-        {
-            title: 'Six dead after record rain causes floods in Japan'
-        },
-        {
-            title: 'Modi meets top US tech leaders amid semiconductor push'
-        },
-        {
-            title: 'Six dead after record rain causes floods in Japan'
-        },
-    ]
+    // const head = [
+    //     {
+    //         title: 'Modi meets top US tech leaders amid semiconductor push'
+    //     },
+    //     {
+    //         title: 'Six dead after record rain causes floods in Japan'
+    //     },
+    //     {
+    //         title: 'Modi meets top US tech leaders amid semiconductor push'
+    //     },
+    //     {
+    //         title: 'Six dead after record rain causes floods in Japan'
+    //     },
+    //     {
+    //         title: 'Modi meets top US tech leaders amid semiconductor push'
+    //     },
+    //     {
+    //         title: 'Six dead after record rain causes floods in Japan'
+    //     },
+    // ]
 
     return (
         <div className='bg-white shadow flex flex-wrap'>
@@ -38,12 +39,14 @@ const HeadLines = () => {
             <div className='flex md:w-[calc(100%-170px)] w-full'>
                 <div className='flex w-full justify-start items-center'>
                     <Marquee>
-                        {
-                            head.map((h,i) => <Link key={i} className='py-3 font-semibold hover:text-[#c80000] pr-12 text-sm' href={'/'}>
-                                {h.title}
-                            </Link>
-                            )
-                        }
+                        {Object.keys(news).length > 0 &&
+                                Object.keys(news).map((c, i) => <> {
+                                    news[c].length > 0 && news[c].map((n,i) => <Link key={i} className='py-3 font-semibold hover:text-[#c80000] pr-12 text-sm' href={`/news/${n.slug}`}>
+                                    {n.title}
+                                    </Link>
+                                )}
+                            </>
+                        )}
                     </Marquee>
                 </div>
             </div>
