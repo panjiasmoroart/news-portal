@@ -21,7 +21,7 @@ const Home = async () => {
 
   let news = await news_data?.json()
   news = news.news
-  console.log(news);
+  // console.log(news);
 
   return (
     <div>

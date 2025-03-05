@@ -8,7 +8,7 @@ import Category from '@/components/Category';
 import { base_api_url } from '@/config/config';
 
 const CategoryNews = async ({ params }) => {
-    const { category } = params; 
+    const { category } = await params; 
     const res = await fetch(`${base_api_url}/api/category/news/${category}`,{
         next: {
             revalidate: 1

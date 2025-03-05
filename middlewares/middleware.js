@@ -33,7 +33,7 @@ class middleware {
     }
 
     role = async (req,res, next) => {
-        console.log(req);
+        // console.log(req);
         const { userInfoNew } = req
         if (userInfoNew.role === 'admin') {
             next();

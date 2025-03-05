@@ -4,7 +4,7 @@ import Marquee from 'react-fast-marquee';
 import Link from 'next/link';
 
 const HeadLines = ({ news }) => { 
-    console.log(news)
+    // console.log(news)
 
     // const head = [
     //     {

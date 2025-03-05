@@ -37,7 +37,7 @@ const NewsContent = () => {
           })   
           set_all_news(data.news)
           setNews(data.news)
-          console.log(data.news)
+          // console.log(data.news) 
       } catch (error) {
           console.log(error)
       }
