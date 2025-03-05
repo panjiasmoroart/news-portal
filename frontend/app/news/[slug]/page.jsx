@@ -8,7 +8,7 @@ import HtmlParser from 'react-html-parser';
 import RelatedNews from '@/components/news/RelatedNews';
 
 const Details = async ({ params }) => {
-    const { slug } = params;
+    const { slug } = await params;
 
     const res = await fetch(`${base_api_url}/api/news/details/${slug}`,{
         next: {

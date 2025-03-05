@@ -394,7 +394,21 @@ class newsControllers {
 
     news_search = async (req, res) => {
         const { value } =  req.query;
-        console.log(value)
+        // console.log(value); 
+        try {
+            if (!value) {
+                return res.status(400).json({ message: 'Search value is required'})
+            }
+    
+            const news = await newsModel.find({
+                status: 'active',
+                title: { $regex: value, $options: 'i' }
+            })
+            return res.status(200).json({ news })
+            
+        } catch (error) {
+            return res.status(500).json({message: 'Internal server Error'})
+        }
     }
         
 }
