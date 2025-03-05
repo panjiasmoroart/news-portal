@@ -391,6 +391,11 @@ class newsControllers {
         }
     
     }
+
+    news_search = async (req, res) => {
+        const { value } =  req.query;
+        console.log(value)
+    }
         
 }
 
