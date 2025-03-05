@@ -310,6 +310,11 @@ class newsControllers {
             return res.status(500).json({message: 'Internal server Error'});
         }
     }
+
+    get_category_news = async (req, res) => {
+        const {category} =  req.params
+        console.log(category)
+    }
 }
 
 module.exports = new newsControllers()

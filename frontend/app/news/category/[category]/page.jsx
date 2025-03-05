@@ -5,8 +5,19 @@ import Search from '@/components/news/Search';
 import RecentNews from '@/components/news/RecentNews';
 import PopularNews from '@/components/news/PopularNews';
 import Category from '@/components/Category';
+import { base_api_url } from '@/config/config';
 
-const page = () => {
+const CategoryNews = async ({ params }) => {
+    const { category } = params; 
+    const res = await fetch(`${base_api_url}/api/category/news/${category}`,{
+        next: {
+            revalidate: 1
+        }
+    })
+   
+    const {news} = await res.json();
+    console.log(news);
+
     return (
         <div>
             <div className='bg-white shadow-sm py-4'>
@@ -53,4 +64,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default CategoryNews;
