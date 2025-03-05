@@ -1,7 +1,8 @@
 const newsControllers = require('../controllers/newsControllers');
 const router = require('express').Router();
 const middleware = require('../middlewares/middleware');
- 
+
+// Admin API Private
 router.post('/api/news/add',middleware.auth, newsControllers.add_news);
 router.get('/api/images', middleware.auth, newsControllers.get_images);
 router.post('/api/images/add',middleware.auth,newsControllers.add_images);
@@ -13,6 +14,7 @@ router.put('/api/news/status-update/:news_id', middleware.auth, newsControllers.
 
 // Frontend Api All
 router.get('/api/all/news', newsControllers.get_all_news);
-router.get('/api/category/all',newsControllers.get_categories);
+router.get('/api/category/all', newsControllers.get_categories);
+router.get('/api/news/details/:slug', newsControllers.get_details_news);
  
 module.exports = router

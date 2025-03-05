@@ -282,6 +282,11 @@ class newsControllers {
         }
     
     }
+
+    get_details_news = async (req, res) => {
+        const { slug } = req.params;
+        console.log(slug);
+    }
 }
 
 module.exports = new newsControllers()

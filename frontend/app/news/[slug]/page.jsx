@@ -5,8 +5,17 @@ import PopularNews from '@/components/news/PopularNews';
 import RecentNews from '@/components/news/RecentNews';
 import Search from '@/components/news/Search';
 import React from 'react';
+import { base_api_url } from '@/config/config';
 
-const page = () => {
+const Details = async ({ params }) => {
+    const { slug } = params;
+
+    const res = await fetch(`${base_api_url}/api/news/details/${slug}`,{
+        next: {
+            revalidate: 1
+        }
+    })
+
     return (
         <div>
             <div className='bg-white shadow-sm py-4'>
@@ -85,4 +94,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Details;
