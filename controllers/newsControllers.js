@@ -285,7 +285,30 @@ class newsControllers {
 
     get_details_news = async (req, res) => {
         const { slug } = req.params;
-        console.log(slug);
+        // console.log(slug);
+
+        try {
+            const news = await newsModel.findOneAndUpdate({ slug } , {
+            $inc: { count:1 }
+        }, { new: true})
+    
+            const relatedNews = await newsModel.find({
+            $and: [
+                {
+                    slug: {
+                        $ne: slug
+                    }
+                }, {
+                    category: {
+                        $eq: news.category
+                    }
+                }
+            ]
+        }).limit(4).sort({ createAt: -1 })
+            return res.status(200).json({ news: news ? news: {}, relatedNews});
+        } catch (error) {
+            return res.status(500).json({message: 'Internal server Error'});
+        }
     }
 }
 
