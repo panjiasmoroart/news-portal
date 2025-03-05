@@ -9,6 +9,7 @@ import DetailsNews from "@/components/news/DetailsNews";
 import DetailsNewsCol from "@/components/news/DetailsNewsCol";
 import NewsCard from "@/components/news/item/NewsCard";
 import { base_api_url } from "@/config/config";
+import RecentNews from "@/components/news/RecentNews";
 
 const Home = async () => {
 
@@ -112,14 +113,7 @@ const Home = async () => {
 
                 <div className="w-full lg:w-4/12">
                   <div className="pl-3">
-                    <Title title="Recent News" />
-                    <div className="grid grid-cols-1 gap-y-[8px] mt-2">
-                      {
-                        news['Sports']?.map((item,i) => (
-                          <NewsCard item={item} key={i} />
-                        ))
-                      }
-                    </div> 
+                    <RecentNews />
                   </div>  
                 </div> 
               </div> 

@@ -19,5 +19,6 @@ router.get('/api/news/details/:slug', newsControllers.get_details_news);
 router.get('/api/category/news/:category', newsControllers.get_category_news);
 router.get('/api/popular/news', newsControllers.get_popular_news);
 router.get('/api/latest/news', newsControllers.get_latest_news);
+router.get('/api/recent/news',newsControllers.get_recent_news);
  
 module.exports = router
