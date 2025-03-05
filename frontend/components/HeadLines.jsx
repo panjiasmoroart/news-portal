@@ -40,12 +40,12 @@ const HeadLines = ({ news }) => {
                 <div className='flex w-full justify-start items-center'>
                     <Marquee>
                         {Object.keys(news).length > 0 &&
-                                Object.keys(news).map((c, i) => <> {
+                                Object.keys(news).map((c, i) => <div key={i}> {
                                     news[c].length > 0 && news[c].map((n,i) => <Link key={i} className='py-3 font-semibold hover:text-[#c80000] pr-12 text-sm' href={`/news/${n.slug}`}>
                                     {n.title}
                                     </Link>
                                 )}
-                            </>
+                            </div>
                         )}
                     </Marquee>
                 </div>
