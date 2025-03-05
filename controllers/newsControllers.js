@@ -313,7 +313,27 @@ class newsControllers {
 
     get_category_news = async (req, res) => {
         const {category} =  req.params
-        console.log(category)
+        // console.log(category);
+        try {
+            const news = await newsModel.find({
+                $and: [
+                    {
+                        category: {
+                            $eq: category
+                        }
+                    },
+                    {
+                        status: {
+                            $eq: 'active'
+                        }
+                    }
+                ]
+            })
+    
+            return res.status(201).json({ news })
+        } catch (error) {
+            return res.status(500).json({message: 'Internal server Error'})
+        }
     }
 }
 
