@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import Category from '@/components/Category';
 import PopularNews from '@/components/news/PopularNews';
@@ -21,7 +21,9 @@ const page = () => {
                     <div className='flex flex-wrap'>
                             <div className='w-full xl:w-8/12'>
                                 <div className='w-full pr-0 xl:pr-4'> 
-                                    <SearchNews/> 
+                                    <Suspense>
+                                        <SearchNews/>
+                                    </Suspense>     
                                 </div> 
                             </div>
 
