@@ -35,7 +35,7 @@ class middleware {
     role = async (req,res, next) => {
         // console.log(req);
         const { userInfoNew } = req
-        if (userInfoNew.role === 'admin') {
+        if (userInfoNew.role === 'admin' || userInfoNew.role === 'writer') {
             next();
         }else {
             return res.status(401).json({ 

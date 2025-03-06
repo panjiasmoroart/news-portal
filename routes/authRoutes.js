@@ -8,5 +8,6 @@ router.get('/api/news/writers',middleware.auth, middleware.role, authController.
 router.get('/api/news/writer/:id',middleware.auth, middleware.role, authController.getWriterById);
 router.put('/api/update/writer/:id',middleware.auth,middleware.role, authController.update_writer);
 router.delete('/api/delete/writer/:id',middleware.auth,middleware.role, authController.delete_writer);
+router.put('/api/update-profile/:id',middleware.auth,middleware.role, authController.update_profile);
 
 module.exports = router;
