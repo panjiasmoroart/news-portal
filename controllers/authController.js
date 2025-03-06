@@ -250,8 +250,21 @@ class authController {
     }
 
     get_profile = async (req, res) => {
-        console.log('get Profile')
+        try {
+         const userId = req.params.id;
+
+        if (!userId) {
+            return res.status(400).json({message: 'User Id is required'})
+        }
+
+        const user = await authModel.findById(userId)
+        return res.status(200).json({ user })
+            
+        } catch (error) {
+            return res.status(500).json({ message: 'Internal Server Error' })
+        }
     }
+
 }
 
 module.exports = new authController()
