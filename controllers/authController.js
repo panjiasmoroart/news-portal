@@ -248,6 +248,10 @@ class authController {
             } 
         }) 
     }
+
+    get_profile = async (req, res) => {
+        console.log('get Profile')
+    }
 }
 
 module.exports = new authController()
