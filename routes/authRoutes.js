@@ -10,5 +10,6 @@ router.put('/api/update/writer/:id',middleware.auth,middleware.role, authControl
 router.delete('/api/delete/writer/:id',middleware.auth,middleware.role, authController.delete_writer);
 router.put('/api/update-profile/:id',middleware.auth,middleware.role, authController.update_profile);
 router.get('/api/profile/:id',middleware.auth,middleware.role, authController.get_profile);
+router.post('/api/change-password',middleware.auth, authController.changePassword);
 
 module.exports = router;
